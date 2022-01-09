@@ -1,0 +1,80 @@
+.result {
+   color: whitesmoke;
+    height: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    max-width: 100%;
+    text-align: center;
+}
+.example-text   {
+    
+    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: xyzvh;
+    text-shadow: 0px 0px 2px white;
+    justify-content: space-around;
+    font-family: 'Song Myung', serif;
+}
+.example-text2 {
+    font-family: 'Dancing Script', cursive;
+    color: #fae56e;
+}
+.ff {
+    color: #fae56e;
+    font-size: large;
+}
+.save_button {
+    text-align: right;
+    margin: 0 auto;
+}
+
+article li {
+    line-height: 10vh;
+    text-align: left;
+    margin: 0 auto;
+    font-size: 15px;
+}
+article ul {
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+    border-color: #ffd700;
+}
+.add_list{
+    text-align: left;
+}
+.add_list A {
+    display: block;
+}
+.ul_list {
+    padding: 10px;
+}
+.ul_list li{
+    list-style:disc;
+    padding: 0;
+}
+
+.sns {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.sns > li {
+  margin: 2px;
+  padding: 0 0 0 0;
+  border: 0;
+  float: left;
+}
+
+.link-icon {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-right: 10px;
+  padding-top: 50px;
+}
