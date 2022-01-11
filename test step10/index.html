@@ -19,7 +19,7 @@
   <meta name="theme-color" content="#ffffff">
 
   <!-- 사이트 SEO 최적화 -->
-  <meta name="autor" content="SongBBang">
+  <meta name="autor" content="YBJ">
   <meta name="keywords" content="명언">
   <meta name="description" content="내게 현재 어울릴 것 같은 명언을 추천해주는 테스트입니다.">
   <!-- sns share -->
@@ -74,26 +74,25 @@
   <article class="img_load">
     <img src="img/main.jpg">
     <img src="img/5.jpg">
-
   </article>
   <!-- 시작화면 -->
   <article id="main" class="start mx-auto mt-5 px-3">
     <h1 class='title-name text-center'>오늘 하루 들려주고 싶은 말</h1>
-    <div id="img" class=" mx-auto">
+    <section id="img" class=" mx-auto">
       <img id="main_img" src="img/5.jpg" width="300" height="200" alt="mainImage" class="img-fluid">
-    </div>
+    </section>
     <button type="button" class="title-start btn btn-warning my-3" onclick="start()">테스트 시작하기</button>
   </article>
 
   <!-- 문제화면 -->
   <section id="qna">
-    <div class="status mx-auto mt-5">
+    <section class="status mx-auto mt-5">
       <div class="statusBar">
       </div>
-    </div>
-    <div class="qBox my-5 py-3 px-3 mx-auto">
-    </div>
-    <div>
+    </section>
+    <section class="qBox my-5 py-3 px-3 mx-auto">
+    </section>
+    <section>
       <ul class="list-group list-group-flush">
         <li><button id="A" type="button" class="my-3 py-3 mx-auto fadeIn answerList  ">Primary</button>
         </li>
@@ -103,30 +102,30 @@
         </li>
       </ul>
       <!-- 버튼과 fadein out속성 넣는것추가해야함 -->
-    </div>
+    </section>
   </section>
 
   <!-- 결과화면 -->
   <article id="down" class="save_img result g-col-6 g-col-md-4">
     <h1>제가 당신에게 해주고 싶은 말은..</h1>
-    <div id="img_down" class="example">
+    <section id="img_down" class="example">
       <h2 id="mood" class="example-text">명언</h2>
       <div>
         <h3 id="explain" class="example-text2">저자</h3>
       </div>
-    </div>
+    </section>
     <!-- 저장하기 버튼 -->
-    <div class="save_button">
+    <section class="save_button">
       <button id="save" class="btn btn-outline-warning mt-2">이미지 저장</button>
       <button id="reset" class="btn btn-outline-warning mt-2" onclick="reset()">초기화</button>
-    </div>
+    </section>
     <ul class="ul_list mt-5 mb-3">
       <li id="text1">공감글</li>
       <li id="text2">공감글2</li>
       <li id="text3">공감글3</li>
     </ul>
-    <div class="ff mb-5">눌러서 다른글 확인</div>
-    <div class="add_list" style="border-bottom: 1px dashed; border-color: #ffd700;">
+    <section class="ff mb-5">눌러서 다른글 확인</section>
+    <section class="add_list" style="border-bottom: 1px dashed; border-color: #ffd700;">
       <div id="line1" class="A mt-3 mb-5">
         <p id="one"></p>
         <p id="oneA"></p>
@@ -139,11 +138,11 @@
         <p id="three"></p>
         <p id="threeA"></p>
       </div>
-    </div>
+    </section>
     <button type="button" class="title-close btn btn-outline-warning mt-5"
       onClick="window.location.reload();">처음으로</button>
     <!-- 결과화면 디자인 -->
-    <div class="mt-5">
+    <section class="mt-5">
       <ul class="sns"
         style="display: flex;flex-direction: row; justify-content: center; align-items: center; border:none">
         <li class="facebook">
@@ -165,7 +164,7 @@
               align="right"></a>
         </li>
       </ul>
-    </div>
+    </section>
 
   </article>
 
