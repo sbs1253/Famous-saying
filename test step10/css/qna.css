@@ -181,3 +181,19 @@
     margin: 0 auto;
   }
 }
+.kakao_ad_area {
+  width: 468px;
+  height: 60px;
+}
+@media (min-width: 500px) {
+  .kakao_ad_area {
+    width: 320px;
+    height: 100px;
+  }
+}
+@media (min-width: 800px) {
+  .kakao_ad_area {
+    width: 728px;
+    height: 90px;
+  }
+}
