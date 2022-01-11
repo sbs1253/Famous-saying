@@ -1,350 +1,520 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Jua&family=Song+Myung&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>듣고싶은 명언 테스트</title>
 
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Jua&family=Song+Myung&display=swap"
-    rel="stylesheet">
-  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>듣고싶은 명언 테스트</title>
+    <!-- 파비콘 -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon-16x16.png"
+    />
+    <link rel="apple-touch-icon-precomposed" href="img/favicon-16x16.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
 
-  <!-- 파비콘 -->
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-  <link rel="apple-touch-icon-precomposed" href="img/favicon-16x16.png">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="theme-color" content="#ffffff">
+    <!-- 사이트 SEO 최적화 -->
+    <meta name="autor" content="YBJ" />
+    <meta name="keywords" content="명언" />
+    <meta
+      name="description"
+      content="내게 현재 어울릴 것 같은 명언을 추천해주는 테스트입니다."
+    />
+    <!-- sns share -->
+    <meta property="og:url" content="https://space-safari.netlify.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="듣고싶은 명언 테스트" />
+    <meta
+      property="og:description"
+      content="내게 현재 어울릴것같은 명언을 추천해주는 테스트입니다."
+    />
+    <meta
+      property="og:image"
+      content="https://space-safari.netlify.app/img/black.png"
+    />
+    <!-- 폰트 위치 -->
+    <!-- 부트스트렙 불러오기  -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
 
-  <!-- 사이트 SEO 최적화 -->
-  <meta name="autor" content="YBJ">
-  <meta name="keywords" content="명언">
-  <meta name="description" content="내게 현재 어울릴 것 같은 명언을 추천해주는 테스트입니다.">
-  <!-- sns share -->
-  <meta property="og:url" content="https://space-safari.netlify.app">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="듣고싶은 명언 테스트">
-  <meta property="og:description" content="내게 현재 어울릴것같은 명언을 추천해주는 테스트입니다.">
-  <meta property="og:image" content="https://space-safari.netlify.app/img/black.png">
-  <!-- 폰트 위치 -->
-  <!-- 부트스트렙 불러오기  -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- 내 css 파일 우선순위 높게 -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/qna.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/result.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- share button -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+      Kakao.init("05f7ab27e8ebf8a5ad25c07e86bace15");
+      Kakao.isInitialized();
+    </script>
+    <!-- 광고 -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-0BD542H9K4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  <!-- 내 css 파일 우선순위 높게 -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/default.css">
-  <link rel="stylesheet" href="css/qna.css">
-  <link rel="stylesheet" href="css/animation.css">
-  <link rel="stylesheet" href="css/result.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- share button -->
-  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-  <script>
-    Kakao.init('05f7ab27e8ebf8a5ad25c07e86bace15');
-    Kakao.isInitialized();
-  </script>
-  <!-- 광고 -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BD542H9K4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+      gtag("config", "G-0BD542H9K4");
+    </script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7352780999915529"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      async
+      custom-element="amp-auto-ads"
+      src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
+    ></script>
+  </head>
+  <!-- col-lg-6 col-md-8 col-sm-10 col-12 -->
 
-    gtag('config', 'G-0BD542H9K4');
-  </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7352780999915529"
-    crossorigin="anonymous"></script>
-  <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-  </script>
-</head>
-<!-- col-lg-6 col-md-8 col-sm-10 col-12 -->
+  <body class="container">
+    <div id="loading">
+      <img src="img/loading.gif" alt="loading" />
+    </div>
+    <!-- 이미지 선 로딩 -->
+    <article class="img_load">
+      <img src="img/main.jpg" />
+      <img src="img/5.jpg" />
+    </article>
+    <!-- 시작화면 -->
+    <article id="main" class="start mx-auto mt-5 px-3">
+      <h1 class="title-name text-center">오늘 하루 들려주고 싶은 말</h1>
+      <section id="img" class="mx-auto">
+        <img
+          id="main_img"
+          src="img/5.jpg"
+          width="300"
+          height="200"
+          alt="mainImage"
+          class="img-fluid"
+        />
+      </section>
+      <button
+        type="button"
+        class="title-start btn btn-warning my-3"
+        onclick="start()"
+      >
+        테스트 시작하기
+      </button>
+    </article>
 
-<body class='container'>
-  <div id="loading">
-    <img src="img/loading.gif" alt="loading">
-  </div>
-  <!-- 이미지 선 로딩 -->
-  <article class="img_load">
-    <img src="img/main.jpg">
-    <img src="img/5.jpg">
-  </article>
-  <!-- 시작화면 -->
-  <article id="main" class="start mx-auto mt-5 px-3">
-    <h1 class='title-name text-center'>오늘 하루 들려주고 싶은 말</h1>
-    <section id="img" class=" mx-auto">
-      <img id="main_img" src="img/5.jpg" width="300" height="200" alt="mainImage" class="img-fluid">
+    <!-- 문제화면 -->
+    <section id="qna">
+      <section class="status mx-auto mt-5">
+        <div class="statusBar"></div>
+      </section>
+      <section class="qBox my-5 py-3 px-3 mx-auto"></section>
+      <section>
+        <ul class="list-group list-group-flush">
+          <li>
+            <button
+              id="A"
+              type="button"
+              class="my-3 py-3 mx-auto fadeIn answerList"
+            >
+              Primary
+            </button>
+          </li>
+          <li>
+            <button
+              id="B"
+              type="button"
+              class="my-3 py-3 mx-auto fadeIn answerList"
+            >
+              Primary
+            </button>
+          </li>
+          <li>
+            <button
+              id="C"
+              type="button"
+              class="my-3 py-3 mx-auto fadeIn answerList"
+            >
+              Primary
+            </button>
+          </li>
+        </ul>
+        <!-- 버튼과 fadein out속성 넣는것추가해야함 -->
+      </section>
     </section>
-    <button type="button" class="title-start btn btn-warning my-3" onclick="start()">테스트 시작하기</button>
-  </article>
 
-  <!-- 문제화면 -->
-  <section id="qna">
-    <section class="status mx-auto mt-5">
-      <div class="statusBar">
-      </div>
-    </section>
-    <section class="qBox my-5 py-3 px-3 mx-auto">
-    </section>
-    <section>
-      <ul class="list-group list-group-flush">
-        <li><button id="A" type="button" class="my-3 py-3 mx-auto fadeIn answerList  ">Primary</button>
-        </li>
-        <li><button id="B" type="button" class="my-3 py-3 mx-auto fadeIn answerList">Primary</button>
-        </li>
-        <li><button id="C" type="button" class="my-3 py-3 mx-auto fadeIn answerList">Primary</button>
-        </li>
+    <!-- 결과화면 -->
+    <article id="down" class="save_img result g-col-6 g-col-md-4">
+      <h1>제가 당신에게 해주고 싶은 말은..</h1>
+      <section id="img_down" class="example">
+        <h2 id="mood" class="example-text">명언</h2>
+        <div>
+          <h3 id="explain" class="example-text2">저자</h3>
+        </div>
+      </section>
+      <!-- 저장하기 버튼 -->
+      <section class="save_button">
+        <button id="save" class="btn btn-outline-warning mt-2">
+          이미지 저장
+        </button>
+        <button
+          id="reset"
+          class="btn btn-outline-warning mt-2"
+          onclick="reset()"
+        >
+          초기화
+        </button>
+      </section>
+      <ul class="ul_list mt-5 mb-3">
+        <li id="text1">공감글</li>
+        <li id="text2">공감글2</li>
+        <li id="text3">공감글3</li>
       </ul>
-      <!-- 버튼과 fadein out속성 넣는것추가해야함 -->
-    </section>
-  </section>
+      <section class="ff mb-5">눌러서 다른글 확인</section>
+      <section
+        class="add_list"
+        style="border-bottom: 1px dashed; border-color: #ffd700"
+      >
+        <div id="line1" class="A mt-3 mb-5">
+          <p id="one"></p>
+          <p id="oneA"></p>
+        </div>
+        <div id="line2" class="A mb-5">
+          <p id="two"></p>
+          <p id="twoA"></p>
+        </div>
+        <div id="line3" class="A mb-5">
+          <p id="three"></p>
+          <p id="threeA"></p>
+        </div>
+      </section>
+      <button
+        type="button"
+        class="title-close btn btn-outline-warning mt-5"
+        onClick="window.location.reload();"
+      >
+        처음으로
+      </button>
+      <!-- 결과화면 디자인 -->
+      <section class="mt-5">
+        <ul
+          class="sns"
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border: none;
+          "
+        >
+          <li class="facebook">
+            <a
+              href="#n"
+              onclick="fn_sendFB('facebook');return false;"
+              class="link-icon facebook"
+              target="_self"
+              title="페이스북 새창열림"
+              ><img src="./icon/icon-facebook.png" alt="leaf" width=32px"
+              height="32px" align="right"></a
+            >
+          </li>
+          <li class="twitter">
+            <a
+              href="#n"
+              onclick="fn_sendFB('twitter');return false;"
+              class="link-icon twitter"
+              target="_self"
+              title="트위터 새창열림"
+              ><img src="./icon/icon-twitter.png" alt="leaf" width=32px"
+              height="32px" align="right"></a
+            >
+          </li>
+          <li class="band">
+            <a
+              href="#n"
+              onclick="fn_sendFB('band');return false;"
+              class="link-icon band"
+              target="_self"
+              title="네이버밴드 새창열림"
+              ><img src="./icon/icon-band.png" alt="leaf" width=32px"
+              height="32px" align="right"></a
+            >
+          </li>
+          <li class="kakaotalk">
+            <a
+              href="#n"
+              id="btnKakao"
+              onclick="fn_sendFB('kakaotalk');return false;"
+              class="kakaotalk link-icon kakao"
+              target="_self"
+              title="카카오톡 새창열림"
+              ><img src="./icon/icon-kakao.png" alt="leaf" width=32px"
+              height="32px" align="right"></a
+            >
+          </li>
+        </ul>
+      </section>
+    </article>
 
-  <!-- 결과화면 -->
-  <article id="down" class="save_img result g-col-6 g-col-md-4">
-    <h1>제가 당신에게 해주고 싶은 말은..</h1>
-    <section id="img_down" class="example">
-      <h2 id="mood" class="example-text">명언</h2>
-      <div>
-        <h3 id="explain" class="example-text2">저자</h3>
-      </div>
-    </section>
-    <!-- 저장하기 버튼 -->
-    <section class="save_button">
-      <button id="save" class="btn btn-outline-warning mt-2">이미지 저장</button>
-      <button id="reset" class="btn btn-outline-warning mt-2" onclick="reset()">초기화</button>
-    </section>
-    <ul class="ul_list mt-5 mb-3">
-      <li id="text1">공감글</li>
-      <li id="text2">공감글2</li>
-      <li id="text3">공감글3</li>
-    </ul>
-    <section class="ff mb-5">눌러서 다른글 확인</section>
-    <section class="add_list" style="border-bottom: 1px dashed; border-color: #ffd700;">
-      <div id="line1" class="A mt-3 mb-5">
-        <p id="one"></p>
-        <p id="oneA"></p>
-      </div>
-      <div id="line2" class="A mb-5">
-        <p id="two"></p>
-        <p id="twoA"></p>
-      </div>
-      <div id="line3" class="A mb-5">
-        <p id="three"></p>
-        <p id="threeA"></p>
-      </div>
-    </section>
-    <button type="button" class="title-close btn btn-outline-warning mt-5"
-      onClick="window.location.reload();">처음으로</button>
-    <!-- 결과화면 디자인 -->
-    <section class="mt-5">
-      <ul class="sns"
-        style="display: flex;flex-direction: row; justify-content: center; align-items: center; border:none">
-        <li class="facebook">
-          <a href="#n" onclick="fn_sendFB('facebook');return false;" class="link-icon facebook " target="_self"
-            title="페이스북 새창열림"><img src="./icon/icon-facebook.png" alt="leaf" width=32px" height="32px"
-              align="right"></a>
-        </li>
-        <li class="twitter">
-          <a href="#n" onclick="fn_sendFB('twitter');return false;" class="link-icon twitter" target="_self"
-            title="트위터 새창열림"><img src="./icon/icon-twitter.png" alt="leaf" width=32px" height="32px" align="right"></a>
-        </li>
-        <li class="band">
-          <a href="#n" onclick="fn_sendFB('band');return false;" class="link-icon band" target="_self"
-            title="네이버밴드 새창열림"><img src="./icon/icon-band.png" alt="leaf" width=32px" height="32px" align="right"></a>
-        </li>
-        <li class="kakaotalk ">
-          <a href="#n" id="btnKakao" onclick="fn_sendFB('kakaotalk');return false;" class="kakaotalk link-icon kakao"
-            target="_self" title="카카오톡 새창열림"><img src="./icon/icon-kakao.png" alt="leaf" width=32px" height="32px"
-              align="right"></a>
-        </li>
-      </ul>
-    </section>
-
-  </article>
-
-
-
-
-  <article class=" kakao_ad mt-5">
-    <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-O5aOyAvKVTsegJgR" data-ad-width="320"
-      data-ad-height="100"></ins>
-  </article>
-  <!-- 명언 파일 -->
-  <script src="js/sympathy.js"></script>
-  <script src="js/wiseSaying.js"></script>
-  <script src="js/function.js"></script>
-  <script src="js/share.js"></script>
-  <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-  <input type="hidden" id="total" value="0">
-  <!-- <input type="hidden" id="SN" value="0">
+    <article class="kakao_ad mt-5">
+      <ins
+        class="kakao_ad_area"
+        style="display: none"
+        data-ad-unit="DAN-O5aOyAvKVTsegJgR"
+        data-ad-width="320"
+        data-ad-height="100"
+      ></ins>
+      <ins
+        class="kakao_ad_area"
+        style="display: none"
+        data-ad-unit="DAN-Qm3WXHTFKugLC2CC"
+        data-ad-width="320"
+        data-ad-height="100"
+      ></ins>
+      <script
+        type="text/javascript"
+        src="//t1.daumcdn.net/kas/static/ba.min.js"
+        async
+      ></script>
+    </article>
+    <!-- 명언 파일 -->
+    <script src="js/sympathy.js"></script>
+    <script src="js/wiseSaying.js"></script>
+    <script src="js/function.js"></script>
+    <script src="js/share.js"></script>
+    <script
+      type="text/javascript"
+      src="//t1.daumcdn.net/kas/static/ba.min.js"
+      async
+    ></script>
+    <input type="hidden" id="total" value="0" />
+    <!-- <input type="hidden" id="SN" value="0">
   <input type="hidden" id="TF" value="0">
   <input type="hidden" id="JP" value="0"> -->
 
-  <!-- 라이브러리 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js"></script>
-  <!-- jquery 불러오기 -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-    crossorigin="anonymous"></script>
-  <!-- 애니메이션 -->
-  <script>
-    $("#save").on("click", function () {
-      html2canvas(document.querySelector("#img_down")).then(function (canvas) {
-        if (canvas.msToBlob) { //for IE 10, 11
-          var blob = canvas.msToBlob();
-          window.navigator.msSaveBlob(blob, "capture.png");
-        } else {
-          saveAs(canvas.toDataURL(), "capture.png");
+    <!-- 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js"></script>
+    <!-- jquery 불러오기 -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+    <!-- 애니메이션 -->
+    <script>
+      $("#save").on("click", function () {
+        html2canvas(document.querySelector("#img_down")).then(function (
+          canvas
+        ) {
+          if (canvas.msToBlob) {
+            //for IE 10, 11
+            var blob = canvas.msToBlob();
+            window.navigator.msSaveBlob(blob, "capture.png");
+          } else {
+            saveAs(canvas.toDataURL(), "capture.png");
+          }
+        });
+        function saveAs(uri, filename) {
+          var link = document.createElement("a");
+          if (typeof link.download === "string") {
+            link.href = uri;
+            link.download = filename;
+            //Firefox requires the link to be in the body
+            document.body.appendChild(link);
+            //simulate click
+            link.click();
+            //remove the link when done
+            document.body.removeChild(link);
+          } else {
+            window.open(uri);
+          }
         }
       });
-      function saveAs(uri, filename) {
-        var link = document.createElement('a');
-        if (typeof link.download === 'string') {
-          link.href = uri;
-          link.download = filename;
-          //Firefox requires the link to be in the body
-          document.body.appendChild(link);
-          //simulate click
-          link.click();
-          //remove the link when done
-          document.body.removeChild(link);
-        } else {
-          window.open(uri);
-        }
-      }
-    });
-
-  </script>
-  <!-- 문제 만들기 -->
-  <script>
-    var num = 1;
-    // 문제 객체
-    var q = {
-      1: { "title": "나는 당신이 누구인지 어떤일을 하는분인지는 알지못하지만,<br>늘 바쁘던 당신에게 물어보고 싶었습니다.<br> 오늘 하루는 만족한 하루였나요?", "A": "괜찮은 하루였다고 생각한다.", "B": "평소와 비슷한 하루였다.", "C": "조금은 아쉬운 하루였다." },
-      2: { "title": "오늘 하루 당신은 어느 누군가에 방해없이, <br> 나만의 시간을 가지는데 성공했을까요?", "A": "생각했던 대로 이룰수있었다.", "B": "약간은 아쉬웠어도 만족할수 있었다.", "C": "일하느라 바빠서 언제 시간이날지 모르겠다." },
-      3: { "title": "'가득찬물병', '사슴모양 목각인형', '고장난 시계', <br> 현재 당신의 방안에 놓여진 물건입니다.<br> 무엇을 선택하시겠습니까?", "A": "'사슴모양 목각인형'", "B": "'가득찬물병'", "C": "'고장난 시계'" },
-      4: { "title": "가끔은 일이 풀리지 않을때도 있습니다. <br>당신은 일이 풀리지 않고 답답할 때,<br> 어떤식으로 해결할수 있을까요?", "A": "긍정 초긍정 에너지로 모든걸 해결해나간다.", "B": "높은산까진 힘들고 근처 뒷산에 가서,<br>한없이 소리지르는 상상을 해본다..", "C": "나는 한마리의 아주 단단한 단데기처럼,<br> 이정도 쯤이야하고 견뎌낸다." },
-      5: { "title": "당신은 현재 카페에서 시간을 보내고 있습니다.<br>주변 3명에 일행이 나를보며 이야기하는것 같습니다.<br> 당신이 드는생각은 무엇일까요?", "A": "이놈에 인기..지긋지긋하다 정말:)", "B": "관심은 없는데 한번 눈이마주친 순간부터,<br> 자꾸 신경쓰인다.", "C": "이미 그들이 나를 인식하기전부터, <br> 나는 그들을 인식하고 있었다라는 건에 대하여.." },
-      6: { "title": "당신은 마지막으로 맛있는 음식을 먹으며,<br> 하루를 마무리하면 아주만족할것같습니다.<br>무엇을 먹을껀가요?", "A": "내가 직접 만들어 먹는 요리방송에서 본요리", "B": "오늘 하루 수고한 나에게 내리는 포상<br>배달음식", "C": "간단한 면요리" },
-    }
-    // 결과 화면 객체
-    $(document).ready(function () {
-      $('#loading').hide();
-    });
-    // 시작버튼
-    function start() {
-      $("#main").attr("style", "WebkitAnimation: fadeOut 1s")
-      $("#main").attr("style", "animation: fadeOut 1s")
-      setTimeout(() => {
-        $("#qna").attr("style", "WebkitAnimation: fadeIn 1s")
-        $("#qna").attr("style", "animation: fadeIn 1s")
+    </script>
+    <!-- 문제 만들기 -->
+    <script>
+      var num = 1;
+      // 문제 객체
+      var q = {
+        1: {
+          title:
+            "나는 당신이 누구인지 어떤일을 하는분인지는 알지못하지만,<br>늘 바쁘던 당신에게 물어보고 싶었습니다.<br> 오늘 하루는 만족한 하루였나요?",
+          A: "괜찮은 하루였다고 생각한다.",
+          B: "평소와 비슷한 하루였다.",
+          C: "조금은 아쉬운 하루였다.",
+        },
+        2: {
+          title:
+            "오늘 하루 당신은 어느 누군가에 방해없이, <br> 나만의 시간을 가지는데 성공했을까요?",
+          A: "생각했던 대로 이룰수있었다.",
+          B: "약간은 아쉬웠어도 만족할수 있었다.",
+          C: "일하느라 바빠서 언제 시간이날지 모르겠다.",
+        },
+        3: {
+          title:
+            "'가득찬물병', '사슴모양 목각인형', '고장난 시계', <br> 현재 당신의 방안에 놓여진 물건입니다.<br> 무엇을 선택하시겠습니까?",
+          A: "'사슴모양 목각인형'",
+          B: "'가득찬물병'",
+          C: "'고장난 시계'",
+        },
+        4: {
+          title:
+            "가끔은 일이 풀리지 않을때도 있습니다. <br>당신은 일이 풀리지 않고 답답할 때,<br> 어떤식으로 해결할수 있을까요?",
+          A: "긍정 초긍정 에너지로 모든걸 해결해나간다.",
+          B: "높은산까진 힘들고 근처 뒷산에 가서,<br>한없이 소리지르는 상상을 해본다..",
+          C: "나는 한마리의 아주 단단한 단데기처럼,<br> 이정도 쯤이야하고 견뎌낸다.",
+        },
+        5: {
+          title:
+            "당신은 현재 카페에서 시간을 보내고 있습니다.<br>주변 3명에 일행이 나를보며 이야기하는것 같습니다.<br> 당신이 드는생각은 무엇일까요?",
+          A: "이놈에 인기..지긋지긋하다 정말:)",
+          B: "관심은 없는데 한번 눈이마주친 순간부터,<br> 자꾸 신경쓰인다.",
+          C: "이미 그들이 나를 인식하기전부터, <br> 나는 그들을 인식하고 있었다라는 건에 대하여..",
+        },
+        6: {
+          title:
+            "당신은 마지막으로 맛있는 음식을 먹으며,<br> 하루를 마무리하면 아주만족할것같습니다.<br>무엇을 먹을껀가요?",
+          A: "내가 직접 만들어 먹는 요리방송에서 본요리",
+          B: "오늘 하루 수고한 나에게 내리는 포상<br>배달음식",
+          C: "간단한 면요리",
+        },
+      };
+      // 결과 화면 객체
+      $(document).ready(function () {
+        $("#loading").hide();
+      });
+      // 시작버튼
+      function start() {
+        $("#main").attr("style", "WebkitAnimation: fadeOut 1s");
+        $("#main").attr("style", "animation: fadeOut 1s");
         setTimeout(() => {
-          $("#main").attr("style", "display: none")
-          $("#qna").attr("style", "display: block")
-        }, 400);
-        next();
-      }, 400);
-    }
-    // 클릭시 변하는 값 저장
-    // id가 type 인 태그의 value 를 가져오고 id가 그 value인 태그의 값을 1씩증가
-    function reset() {
-      if (psy == "부정") {
-        quote.innerText = Negative[NegativeNum[0]].quote
-        author.innerText = "➽─" + Negative[NegativeNum[0]].author + '─❥';
-      } else if (psy == "긍정") {
-        quote.innerText = Positive[PositiveNum[0]].quote
-        author.innerText = "➽─" + Positive[PositiveNum[0]].author + '─❥';
-      } else {
-        quote.innerText = Normal[NormalNum[0]].quote
-        author.innerText = "➽─" + Normal[NormalNum[0]].author + '─❥';
-      }
-    }
-    $("#line1").click(function () {
-      const textOne = one.innerText
-      const textTwo = oneA.innerText
-      $("#mood").html(textOne)
-      $("#explain").html(textTwo);
-    });
-    $("#line2").click(function () {
-      const textOne = two.innerText
-      const textTwo = twoA.innerText
-      $("#mood").html(textOne);
-      $("#explain").html(textTwo);
-    });
-    $("#line3").click(function () {
-      const textOne = three.innerText
-      const textTwo = threeA.innerText
-      $("#mood").html(textOne);
-      $("#explain").html(textTwo);
-    });
-
-    $("#A").click(function () {
-      var preValue = $("#total").val()
-      $("#total").val(parseInt(preValue) + 2)
-      next()
-    })
-    $("#B").click(function () {
-      var preValue = $("#total").val()
-      $("#total").val(parseInt(preValue) + 1)
-      next()
-    })
-    // 다음 문제 넘어가는 함수생성
-    $("#C").click(function () {
-      next()
-    })
-    var psy = ""
-    function next() {
-      if (num == 7) {
-        $("#qna").attr("style", "WebkitAnimation: fadeOut 1s")
-        $("#qna").attr("style", "animation: fadeOut 1s")
-        setTimeout(() => {
-          $(".result").attr("style", "WebkitAnimation: fadeIn 0.5s")
-          $(".result").attr("style", "animation: fadeIn 0.5s")
+          $("#qna").attr("style", "WebkitAnimation: fadeIn 1s");
+          $("#qna").attr("style", "animation: fadeIn 1s");
           setTimeout(() => {
-            $("#qna").attr("style", "display: none")
-            $(".result").attr("style", "display: block")
-          }, 450);
-        });
-        if ($("#total").val() <= 3) {
-          부정()
-          psy = "부정"
-        } else if ($("#total").val() >= 4 && $("#total").val() <= 8) {
-          보통()
-          psy = "보통"
-        } else {
-          긍정()
-          psy = "긍정"
-        }
-
-      } else {
-        var status = document.querySelector(".statusBar");
-        $(".statusBar").attr("style", "width: calc(100/6*" + num + "%)")
-        $(".qBox").html(q[num]["title"])
-        $("#A").html(q[num]["A"])
-        $("#B").html(q[num]["B"])
-        $("#C").html(q[num]["C"])
-        var ul = document.querySelector('ul');
-        for (var i = ul.children.length; i >= 0; i--) {
-          ul.appendChild(ul.children[Math.random() * i | 0]);
-        }
-        num++
+            $("#main").attr("style", "display: none");
+            $("#qna").attr("style", "display: block");
+          }, 400);
+          next();
+        }, 400);
       }
-    }
+      // 클릭시 변하는 값 저장
+      // id가 type 인 태그의 value 를 가져오고 id가 그 value인 태그의 값을 1씩증가
+      function reset() {
+        if (psy == "부정") {
+          quote.innerText = Negative[NegativeNum[0]].quote;
+          author.innerText = "➽─" + Negative[NegativeNum[0]].author + "─❥";
+        } else if (psy == "긍정") {
+          quote.innerText = Positive[PositiveNum[0]].quote;
+          author.innerText = "➽─" + Positive[PositiveNum[0]].author + "─❥";
+        } else {
+          quote.innerText = Normal[NormalNum[0]].quote;
+          author.innerText = "➽─" + Normal[NormalNum[0]].author + "─❥";
+        }
+      }
+      $("#line1").click(function () {
+        const textOne = one.innerText;
+        const textTwo = oneA.innerText;
+        $("#mood").html(textOne);
+        $("#explain").html(textTwo);
+      });
+      $("#line2").click(function () {
+        const textOne = two.innerText;
+        const textTwo = twoA.innerText;
+        $("#mood").html(textOne);
+        $("#explain").html(textTwo);
+      });
+      $("#line3").click(function () {
+        const textOne = three.innerText;
+        const textTwo = threeA.innerText;
+        $("#mood").html(textOne);
+        $("#explain").html(textTwo);
+      });
 
-  </script>
-</body>
-<amp-auto-ads type="adsense" data-ad-client="ca-pub-7352780999915529">
-</amp-auto-ads>
- {% comment %} 새로운글 {% endcomment %}
+      $("#A").click(function () {
+        var preValue = $("#total").val();
+        $("#total").val(parseInt(preValue) + 2);
+        next();
+      });
+      $("#B").click(function () {
+        var preValue = $("#total").val();
+        $("#total").val(parseInt(preValue) + 1);
+        next();
+      });
+      // 다음 문제 넘어가는 함수생성
+      $("#C").click(function () {
+        next();
+      });
+      var psy = "";
+      function next() {
+        if (num == 7) {
+          $("#qna").attr("style", "WebkitAnimation: fadeOut 1s");
+          $("#qna").attr("style", "animation: fadeOut 1s");
+          setTimeout(() => {
+            $(".result").attr("style", "WebkitAnimation: fadeIn 0.5s");
+            $(".result").attr("style", "animation: fadeIn 0.5s");
+            setTimeout(() => {
+              $("#qna").attr("style", "display: none");
+              $(".result").attr("style", "display: block");
+            }, 450);
+          });
+          if ($("#total").val() <= 3) {
+            부정();
+            psy = "부정";
+          } else if ($("#total").val() >= 4 && $("#total").val() <= 8) {
+            보통();
+            psy = "보통";
+          } else {
+            긍정();
+            psy = "긍정";
+          }
+        } else {
+          var status = document.querySelector(".statusBar");
+          $(".statusBar").attr("style", "width: calc(100/6*" + num + "%)");
+          $(".qBox").html(q[num]["title"]);
+          $("#A").html(q[num]["A"]);
+          $("#B").html(q[num]["B"]);
+          $("#C").html(q[num]["C"]);
+          var ul = document.querySelector("ul");
+          for (var i = ul.children.length; i >= 0; i--) {
+            ul.appendChild(ul.children[(Math.random() * i) | 0]);
+          }
+          num++;
+        }
+      }
+    </script>
+  </body>
+  <amp-auto-ads type="adsense" data-ad-client="ca-pub-7352780999915529">
+  </amp-auto-ads>
+  {% comment %} 새로운글 {% endcomment %}
 </html>
