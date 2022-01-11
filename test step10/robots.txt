@@ -1,2 +1,3 @@
 User-agent: *
 Allow:/
+Sitemap:https://space-safari.netlify.app/sitemap.xml
