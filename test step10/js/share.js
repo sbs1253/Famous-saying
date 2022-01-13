@@ -2,8 +2,9 @@ function kakaoShare() {
   Kakao.Link.sendDefault({
     objectType: "feed",
     content: {
-      title: "오늘의 명언",
-      description: "내게 현재 어울릴 것 같은 명언을 추천해주는 테스트입니다.",
+      title: "듣고싶은 명언 심리 테스트",
+      description:
+        "<2022 명언 심리 테스트> 심리테스트 결과를 통해 현재 내 심리와 어울리는 유명 명언을 추천해주는 테스트 입니다. 직장인, 사회초년생, 학생들에게 힘이 되었으면 하는 의미에서 제작했습니다.",
       imageUrl: "https://space-safari.netlify.app/img/black.png",
       link: {
         mobileWebUrl: "https://space-safari.netlify.app",
@@ -25,7 +26,7 @@ function kakaoShare() {
 
 function fn_sendFB(sns) {
   var thisUrl = document.URL;
-  var snsTitle = "오늘의 명언";
+  var snsTitle = "듣고싶은 명언 심리 테스트";
   if (sns == "kakaotalk") {
     kakaoShare();
   } else if (sns == "facebook") {
